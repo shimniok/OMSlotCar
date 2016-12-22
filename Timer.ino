@@ -22,11 +22,16 @@ void timerTick() {
 }
 
 void timerLap(uint8_t lane) {
+  uint16_t delta;
   if (lane < LANES) {
-    lap[lane]++;
-    laptime[lane] = elapsed - lastlaptime[lane];
-    lastlaptime[lane] = elapsed;
-    updateLeader();
+    
+    delta = elapsed - lastlaptime[lane];
+    if (delta > 10) { // debounce -- 1 second lap time
+      lap[lane]++;
+      laptime[lane] = delta;
+      lastlaptime[lane] = elapsed;
+      updateLeader();
+    }
   }
 }
 
