@@ -26,8 +26,11 @@ void timerLap(uint8_t lane) {
     lap[lane]++;
     laptime[lane] = elapsed - lastlaptime[lane];
     lastlaptime[lane] = elapsed;
-    eventSet(EVENT_LAP);
+    updateLeader();
   }
+}
+
+inline void updateLeadre() {
 }
 
 void timerStop() {
