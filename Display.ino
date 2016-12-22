@@ -1,6 +1,4 @@
-#include <serLCD.h>
-
-serLCD lcd(7);
+serLCD lcd(LCDPIN);
 
 byte arrow[8] = {
   0b00000,

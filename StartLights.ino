@@ -1,9 +1,5 @@
 // Start Lights
-// Expects 5 start led lights, charlieplexed to pins L1, L2, L3
-
-#define L1 8
-#define L2 9
-#define L3 10
+// Expects 5 start led lights, charlieplexed to pins CHARLIE0, CHARLIE1, CHARLIE2
 
 void charliePin(int p, int m, int v) {
   digitalWrite(p, v); 
@@ -20,34 +16,34 @@ void charliePin(int p, int m, int v) {
 void startLight(int light) {
   switch (light) {
   case 0:  
-    charliePin(L1, INPUT, LOW);
-    charliePin(L2, INPUT, LOW);
-    charliePin(L3, INPUT, LOW);
+    charliePin(CHARLIE0, INPUT, LOW);
+    charliePin(CHARLIE1, INPUT, LOW);
+    charliePin(CHARLIE2, INPUT, LOW);
     break;
   case 1:
-    charliePin(L1, OUTPUT, HIGH);
-    charliePin(L2, OUTPUT, LOW);
-    charliePin(L3, INPUT, LOW);
+    charliePin(CHARLIE0, OUTPUT, HIGH);
+    charliePin(CHARLIE1, OUTPUT, LOW);
+    charliePin(CHARLIE2, INPUT, LOW);
     break;
   case 2:
-    charliePin(L1, OUTPUT, LOW);
-    charliePin(L2, OUTPUT, HIGH);
-    charliePin(L3, INPUT, LOW);
+    charliePin(CHARLIE0, OUTPUT, LOW);
+    charliePin(CHARLIE1, OUTPUT, HIGH);
+    charliePin(CHARLIE2, INPUT, LOW);
     break;     
   case 3:
-    charliePin(L1, INPUT, LOW);
-    charliePin(L2, OUTPUT, HIGH);
-    charliePin(L3, OUTPUT, LOW);
+    charliePin(CHARLIE0, INPUT, LOW);
+    charliePin(CHARLIE1, OUTPUT, HIGH);
+    charliePin(CHARLIE2, OUTPUT, LOW);
     break;     
   case 4:
-    charliePin(L1, INPUT, LOW);
-    charliePin(L2, OUTPUT, LOW);
-    charliePin(L3, OUTPUT, HIGH);
+    charliePin(CHARLIE0, INPUT, LOW);
+    charliePin(CHARLIE1, OUTPUT, LOW);
+    charliePin(CHARLIE2, OUTPUT, HIGH);
     break; 
   case 5:
-    charliePin(L1, OUTPUT, HIGH);
-    charliePin(L2, INPUT, LOW);
-    charliePin(L3, OUTPUT, LOW);
+    charliePin(CHARLIE0, OUTPUT, HIGH);
+    charliePin(CHARLIE1, INPUT, LOW);
+    charliePin(CHARLIE2, OUTPUT, LOW);
     break;
   default:
     break;

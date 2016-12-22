@@ -1,5 +1,4 @@
-#include <Pins.h>
-#include <SoftwareSerial.h>
+#include "Pins.h"
 #include "Events.h"
 
 #define LANES 2
