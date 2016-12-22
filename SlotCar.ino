@@ -1,10 +1,12 @@
 #include <serLCD.h>
 #include <SoftwareSerial.h>
+#include "Events.h"
 
 #define LANES 2
 
 serLCD lcd(7);
 
+uint8_t leader=99;
 uint16_t elapsed; // in tenths of a second
 uint16_t laptime[LANES]; // in tenths of a second
 uint16_t lastlaptime[LANES]; // in tenths of a second
@@ -14,15 +16,12 @@ void setup() {
   delay(3000);
   displayInit();
   timerInit();
-  pinMode(8, INPUT);
-  pinMode(13, OUTPUT);
   detectInit();
 }
 
 void loop() {
 
-  displayLaps();
-  displayTimes();
+  displayUpdate();
 
   // ready to start race
   // waiting for start button
@@ -30,9 +29,10 @@ void loop() {
   startSequence();
 
   while (1) {
-    displayLaps();
-    displayTimes();
-    delay(200);
+    if (getEvent(EVENT_LAP)) {
+      displayUpdate();
+    }
+    delay(10);
   }
   
   // wait for 2nd start line break
