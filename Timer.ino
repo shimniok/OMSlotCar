@@ -5,13 +5,14 @@ TimerOne timer;
 void timerInit() {
   timer.initialize(100000UL);
   timer.attachInterrupt(timerTick);
-  for (int i=0; i < LANES; i++) {
-    laptime[i] = 0;
-  }
 }
 
 void timerStart() {
   elapsed = 0;
+  for (int i=0; i < LANES; i++) {
+    laptime[i] = 0;
+    lap[i] = 0;
+  }
   timer.start();
 }
 
