@@ -29,12 +29,16 @@ void displayStart() {
   lcd.print("to begin race");
 }
 
-void displayGo() {
+void displayReady() {
   lcd.clear(); 
   lcd.setCursor(1, 1);
   lcd.print("Wait for GREEN");
-  lcd.setCursor(2, 1);
-  lcd.print("then RACE!");
+}
+
+void displayGo() {
+  lcd.clearLine(1);
+  lcd.selectLine(1);
+  lcd.print("  *** GO ***");  
 }
 
 void displayUpdate() {
@@ -58,6 +62,9 @@ inline void displayLeader() {
 }
 
 inline void displayLaps() {
+  if (lap[0] == 1 || lap[1] == 1) {
+    lcd.clear();
+  }
   lcd.setCursor(1, 2);
   sprintf(buf, "%2d", lap[0]);
   lcd.print(buf);
