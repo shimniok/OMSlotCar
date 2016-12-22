@@ -29,7 +29,7 @@ void loop() {
   startSequence();
 
   while (1) {
-    if (getEvent(EVENT_LAP_0)) {
+    if (getEvent(EVENT_LAP)) {
       displayUpdate();
     }
     delay(10);
