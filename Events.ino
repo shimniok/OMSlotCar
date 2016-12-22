@@ -1,4 +1,4 @@
-uint8_t events = 0;
+volatile uint8_t events = 0;
 
 void eventSet(uint8_t e) {
   events |= e;
