@@ -21,6 +21,22 @@ void displayInit() {
   lcd.clear(); 
 }
 
+void displayStart() {
+  lcd.clear();
+  lcd.setCursor(1, 1);
+  lcd.print("Press START");
+  lcd.setCursor(2, 1);
+  lcd.print("to begin race");
+}
+
+void displayGo() {
+  lcd.clear(); 
+  lcd.setCursor(1, 1);
+  lcd.print("Wait for GREEN");
+  lcd.setCursor(2, 1);
+  lcd.print("then RACE!");
+}
+
 void displayUpdate() {
   displayLaps();
   displayLeader();
