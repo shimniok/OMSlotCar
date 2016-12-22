@@ -8,11 +8,11 @@ void detectInit() {
 
 void handleCar0() {
   timerLap(0);
-  eventSet(EVENT_LAP_0);
+  eventSet(EVENT_LAP);
 }
 
 void handleCar1() {
   timerLap(1);
-  eventSet(EVENT_LAP_1);
+  eventSet(EVENT_LAP);
 }
 
