@@ -22,11 +22,13 @@ void setup() {
 void loop() {
 
   displayUpdate();
+
   waitForStartButton();
+  delay(3000);
+ 
   startSequence();
 
   while (1) {
-
     if (startPressed()) break;
     
     if (getEvent(EVENT_LAP)) {
