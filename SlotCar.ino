@@ -1,3 +1,6 @@
+
+#include <serLCD.h>
+#include <EnableInterrupt.h>
 #include "Pins.h"
 #include "Events.h"
 
@@ -14,27 +17,25 @@ void setup() {
   displayInit();
   timerInit();
   detectInit();
+  startInit();
 }
 
 void loop() {
 
   displayUpdate();
-
-  // ready to start race
-  // waiting for start button
-  //start.waitForPress();
+  waitForStartButton();
   startSequence();
 
   while (1) {
+
+    if (startPressed()) break;
+    
     if (getEvent(EVENT_LAP)) {
       displayUpdate();
     }
     delay(10);
   }
   
-  // wait for 2nd start line break
-  // display time behind
-
   // wait for next car to pass
   // display intermediate time
   // increment lap count

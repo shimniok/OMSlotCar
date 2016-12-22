@@ -1,7 +1,6 @@
-#include <PinChangeInt.h>
 
 void startInit() {
-  attachPinChangeInterrupt(BUTTON, handleStart, RISING);
+  enableInterrupt(BUTTON, handleStart, RISING);
 }
 
 void handleStart() {
