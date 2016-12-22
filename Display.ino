@@ -45,11 +45,12 @@ inline void displayLaps() {
 
 
 inline void displayTimes() {
-  lcd.selectLine(2);
-  lcd.setCursor(2, 2);
 
-  cvTenthsToBuf(elapsed);
+  cvTenthsToBuf(laptime[0]);
+  lcd.setCursor(2, 2);
   lcd.print(buf);
+
+  cvTenthsToBuf(laptime[1]);
   lcd.setCursor(2, 10);
   lcd.print(buf);
 }
@@ -60,8 +61,8 @@ void cvTenthsToBuf(uint16_t t) {
   uint8_t seconds;
   uint8_t tenths;
 
-  tenths = elapsed;
-  seconds = elapsed / 10;
+  tenths = t;
+  seconds = t / 10;
   tenths -= seconds * 10;
   minutes = seconds / 60;
   seconds -= minutes * 60;
