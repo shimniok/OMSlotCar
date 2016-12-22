@@ -12,7 +12,7 @@ uint16_t lastlaptime[LANES]; // in tenths of a second
 uint8_t lap[LANES];
 
 void setup() {
-  delay(3000);
+  delay(2000);
   displayInit();
   timerInit();
   startInit();
@@ -23,9 +23,9 @@ void loop() {
 
   displayStart();
   waitForStartButton();
+  displayGo();  
   delay(3000);
 
-  displayGo();  
   startSequence();
   detectEnable();
 
