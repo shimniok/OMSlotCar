@@ -17,9 +17,24 @@ void displayInit() {
   lcd.clear(); 
 }
 
-void displayLaps() {
-  lcd.setCursor(1, 1); // col 1 or 9
-  lcd.printCustomChar(1);
+void displayUpdate() {
+  displayLaps();
+  displayLeader();
+  displayTimes();
+}
+
+inline void displayLeader() {
+  if (leader == 0) {
+    lcd.setCursor(1, 1);
+  } else if (leader == 1) {
+    lcd.setCursor(1, 9);
+  } 
+  if (leader < LANES) {
+    lcd.printCustomChar(1);
+  }
+}
+
+inline void displayLaps() {
   lcd.setCursor(1, 2);
   sprintf(buf, "%2d", lap[0]);
   lcd.print(buf);
@@ -29,15 +44,14 @@ void displayLaps() {
 }
 
 
-void displayTimes() {
-
+inline void displayTimes() {
   lcd.selectLine(2);
   lcd.setCursor(2, 2);
 
   cvTenthsToBuf(elapsed);
   lcd.print(buf);
   lcd.setCursor(2, 10);
-  lcd.print("99:99.9");
+  lcd.print(buf);
 }
 
 
