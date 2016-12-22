@@ -1,5 +1,6 @@
 #include <serLCD.h>
 #include <SoftwareSerial.h>
+#include "Events.h"
 
 #define LANES 2
 
@@ -14,8 +15,6 @@ void setup() {
   delay(3000);
   displayInit();
   timerInit();
-  pinMode(8, INPUT);
-  pinMode(13, OUTPUT);
   detectInit();
 }
 
@@ -30,9 +29,11 @@ void loop() {
   startSequence();
 
   while (1) {
-    displayLaps();
-    displayTimes();
-    delay(200);
+    if (getEvent(EVENT_LAP)) {
+      displayLaps();
+      displayTimes();
+    }
+    delay(10);
   }
   
   // wait for 2nd start line break

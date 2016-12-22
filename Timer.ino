@@ -2,7 +2,6 @@
 
 TimerOne timer;
 
-
 void timerInit() {
   timer.initialize(100000UL);
   timer.attachInterrupt(timerTick);
@@ -27,6 +26,7 @@ void timerLap(uint8_t lane) {
     lap[lane]++;
     laptime[lane] = elapsed - lastlaptime[lane];
     lastlaptime[lane] = elapsed;
+    eventSet(EVENT_LAP);
   }
 }
 
