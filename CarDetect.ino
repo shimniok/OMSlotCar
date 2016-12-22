@@ -1,7 +1,7 @@
 
 void detectInit() {
-  attachInterrupt(digitalPinToInterrupt(CAR0PIN), handleCar0, RISING);
-  attachInterrupt(digitalPinToInterrupt(CAR1PIN), handleCar1, RISING);
+  enableInterrupt(2, handleCar0, RISING);
+  enableInterrupt(3, handleCar1, RISING);
 }
 
 void handleCar0() {
