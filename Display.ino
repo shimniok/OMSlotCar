@@ -1,3 +1,7 @@
+#include <serLCD.h>
+
+serLCD lcd(7);
+
 byte arrow[8] = {
   0b00000,
   0b10000,
@@ -26,12 +30,15 @@ void displayUpdate() {
 inline void displayLeader() {
   if (leader == 0) {
     lcd.setCursor(1, 1);
-  } else if (leader == 1) {
-    lcd.setCursor(1, 9);
-  } 
-  if (leader < LANES) {
     lcd.printCustomChar(1);
-  }
+    lcd.setCursor(1, 9);
+    lcd.print(' ');
+  } else if (leader == 1) {
+    lcd.setCursor(1, 1);
+    lcd.print(' ');
+    lcd.setCursor(1, 9);
+    lcd.printCustomChar(1);
+  } 
 }
 
 inline void displayLaps() {

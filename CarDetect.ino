@@ -1,5 +1,3 @@
-#define CAR0PIN 2
-#define CAR1PIN 3
 
 void detectInit() {
   attachInterrupt(digitalPinToInterrupt(CAR0PIN), handleCar0, RISING);

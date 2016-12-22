@@ -1,10 +1,8 @@
-#include <serLCD.h>
+#include <Pins.h>
 #include <SoftwareSerial.h>
 #include "Events.h"
 
 #define LANES 2
-
-serLCD lcd(7);
 
 uint8_t leader=99;
 uint16_t elapsed; // in tenths of a second
