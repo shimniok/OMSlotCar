@@ -1,6 +1,6 @@
 
 void startInit() {
-  enableInterrupt(BUTTON, handleStart, RISING);
+  enableInterrupt(BUTTON, handleStart, FALLING);
 }
 
 void handleStart() {
