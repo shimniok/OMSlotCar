@@ -22,34 +22,36 @@ void setup() {
 void loop() {
 
   displayStart();
+  delay(200);
   waitForStartButton();
-  displayGo();  
+  displayReady();  
   delay(3000);
 
-  startSequence();
+  startLights();
   detectEnable();
 
   while (1) {
+    delay(50);
     if (startPressed()) break;
     
     if (getEvent(EVENT_LAP)) {
       displayUpdate();
     }
-    delay(10);
   }
-  
-  // wait for next car to pass
-  // display intermediate time
-  // increment lap count
+
+  timerStop();
 
 }
 
-void startSequence() {
-  for (int i=5; i >= 0; i--) {
+void startLights() {
+  for (int i=5; i > 0; i--) {
     delay(500);
     startLight(i);
-    if (i == 0) timerStart();
   }
+  timerStart(); // start timer when green lights
+  displayGo();
+  delay(500);
+  startLight(0); // all lights off
 }
 
 
