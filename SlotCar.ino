@@ -6,6 +6,7 @@
 
 serLCD lcd(7);
 
+uint8_t leader=99;
 uint16_t elapsed; // in tenths of a second
 uint16_t laptime[LANES]; // in tenths of a second
 uint16_t lastlaptime[LANES]; // in tenths of a second
@@ -20,8 +21,7 @@ void setup() {
 
 void loop() {
 
-  displayLaps();
-  displayTimes();
+  displayUpdate();
 
   // ready to start race
   // waiting for start button
@@ -29,9 +29,8 @@ void loop() {
   startSequence();
 
   while (1) {
-    if (getEvent(EVENT_LAP)) {
-      displayLaps();
-      displayTimes();
+    if (getEvent(EVENT_LAP_0)) {
+      displayUpdate();
     }
     delay(10);
   }
