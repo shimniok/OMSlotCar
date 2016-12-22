@@ -15,18 +15,19 @@ void setup() {
   delay(3000);
   displayInit();
   timerInit();
-  detectInit();
   startInit();
+  detectDisable();
 }
 
 void loop() {
 
-  displayUpdate();
-
+  displayStart();
   waitForStartButton();
   delay(3000);
- 
+
+  displayGo();  
   startSequence();
+  detectEnable();
 
   while (1) {
     if (startPressed()) break;
