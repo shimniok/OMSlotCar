@@ -2,6 +2,8 @@
 
 #define BUTTON 4
 
+#define BUZZER 5
+
 #define CAR0PIN 2 // must be 2 or 3 to use Arduino pin interrupts
 #define CAR1PIN 3 // must be 2 or 3 to use Arduino pin interrupts
 

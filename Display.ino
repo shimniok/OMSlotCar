@@ -1,6 +1,6 @@
-#include <serLCD.h>
+#include <SerialLCD.h>
 
-serLCD lcd(LCDPIN);
+SerialLCD lcd(LCDPIN);
 
 byte arrow[8] = {
   0b00000,
@@ -13,10 +13,24 @@ byte arrow[8] = {
   0b10000
 };
 
+byte checker[8] = {
+  0b01010,
+  0b10101,
+  0b01010,
+  0b10101,
+  0b01010,
+  0b10101,
+  0b01010,
+  0b10101
+};
+
 char buf[20];
 
 void displayInit() {
+  lcd.setBrightness(30);
   lcd.createChar(1, arrow);
+  delay(10);
+  lcd.createChar(2, checker);
   delay(10);
   lcd.clear(); 
 }
@@ -73,9 +87,7 @@ inline void displayLaps() {
   lcd.print(buf);
 }
 
-
 inline void displayTimes() {
-
   cvTenthsToBuf(laptime[0]);
   lcd.setCursor(2, 2);
   lcd.print(buf);
@@ -85,6 +97,25 @@ inline void displayTimes() {
   lcd.print(buf);
 }
 
+void displayWinner() {
+  lcd.clear();
+  lcd.printCustomChar(2);
+  lcd.printCustomChar(2);
+  lcd.printCustomChar(2);
+  lcd.printCustomChar(2);
+  lcd.print(" WINNER ");
+  lcd.printCustomChar(2);
+  lcd.printCustomChar(2);
+  lcd.printCustomChar(2);
+  lcd.printCustomChar(2);
+  if (leader == 0) {
+    lcd.setCursor(2,2);
+    lcd.print("LANE 1");
+  } else if (leader == 1) {
+    lcd.setCursor(2,10);
+    lcd.print("LANE 2");
+  }
+}
 
 void cvTenthsToBuf(uint16_t t) {
   uint8_t minutes;
